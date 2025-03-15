@@ -90,5 +90,5 @@ print(response.json())
 This project successfully predicts house prices using machine learning, leveraging a robust preprocessing pipeline, feature engineering, and model optimization. The API is deployed on Render, making it easily accessible for real-world use. Future improvements may include additional feature engineering and deep learning-based models for enhanced accuracy.
 
 This is the deployment link "https://house-price-prediciton.onrender.com"
-I have used the free version of render not sure it will work later or not, i just wanted to make show but can believe on the free render serivce as it might stop in some time.
+I have used the free version of render not sure it will work later or not, i just wanted to show live but can't believe on the free render serivce as it might stop in some time.
 
