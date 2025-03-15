@@ -68,6 +68,5 @@ To deploy on a cloud service (AWS, GCP, Render):
 ## Contributions
 Feel free to submit pull requests or report issues.
 
-## License
-MIT License
-
+This is the deployment link "https://house-price-prediciton.onrender.com"
+I have used the free version of render not sure it will work later or not, i just wanted to make show but can believe on the free render serivce as it might stop in some time.
