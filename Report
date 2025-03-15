@@ -1,0 +1,91 @@
+# House Price Prediction - Project Report
+
+## 1. Data Preprocessing and Feature Engineering
+
+### 1.1 Data Cleaning
+- Removed duplicate and inconsistent entries.
+- Handled missing values using median imputation for numerical features and mode imputation for categorical features.
+- Standardized column names for consistency.
+
+### 1.2 Feature Engineering
+- Extracted `total_sqft` from various formats and converted it to numerical values.
+- Created a new feature `price_per_sqft` to capture variations in pricing.
+- Engineered categorical variables using one-hot encoding for nominal categories and label encoding for ordinal ones.
+- Removed outliers based on `price_per_sqft` distribution.
+- Scaled numerical features using Min-Max normalization.
+
+---
+
+## 2. Model Selection and Optimization
+
+### 2.1 Model Selection
+- Implemented multiple regression models:
+  - **Linear Regression** (baseline model)
+  - **Decision Tree Regressor**
+  - **Random Forest Regressor**
+  - **XGBoost Regressor** (final model selection)
+- Compared models based on RMSE and R² score on validation data.
+
+### 2.2 Hyperparameter Tuning
+- Used **Grid Search CV** and **Randomized Search CV** for parameter optimization.
+- Optimized hyperparameters like learning rate, max depth, and number of estimators for XGBoost.
+- Final model achieved an R² score of **~85%** on test data.
+
+---
+
+## 3. Deployment Strategy
+
+### 3.1 API Development
+- Implemented a **Flask-based REST API** to serve predictions.
+- The API accepts house features in JSON format and returns the predicted price.
+- **Endpoints:**
+  - `/predict`: Accepts input features and returns the price.
+  - `/health`: Ensures the API is running.
+
+### 3.2 Deployment on Render
+- Packaged the application and included a **requirements.txt** for dependency management.
+- Used **Gunicorn** as the WSGI server for production deployment.
+- Configured a **Procfile** with the command: `web: gunicorn --chdir src app:app`.
+- Exposed the API endpoint via Render for public access.
+
+---
+
+## 4. API Usage Guide
+
+### 4.1 Request Format
+```json
+{
+    "location": "Whitefield",
+    "total_sqft": 1200,
+    "bath": 2,
+    "bhk": 3
+}
+```
+
+### 4.2 Sample API Call (Python)
+```python
+import requests
+
+url = "https://your-api-url.onrender.com/predict"
+data = {
+    "location": "Whitefield",
+    "total_sqft": 1200,
+    "bath": 2,
+    "bhk": 3
+}
+response = requests.post(url, json=data)
+print(response.json())
+```
+
+### 4.3 Response Format
+```json
+{
+    "predicted_price": 75.8
+}
+```
+
+---
+
+## 5. Conclusion
+This project successfully predicts house prices using machine learning, leveraging a robust preprocessing pipeline, feature engineering, and model optimization. The API is deployed on Render, making it easily accessible for real-world use. Future improvements may include additional feature engineering and deep learning-based models for enhanced accuracy.
+
