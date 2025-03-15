@@ -24,7 +24,7 @@ Ensure you have the following installed:
 ## Installation & Setup
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com//house-price-prediction.git
+git clone https://github.com/ravikaushik11/House-price-prediciton.git
 cd house-price-prediction
 ```
 
